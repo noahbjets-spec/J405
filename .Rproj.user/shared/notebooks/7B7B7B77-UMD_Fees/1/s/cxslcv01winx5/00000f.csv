@@ -1,0 +1,2 @@
+"0","umd_fees <- read_csv(""https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/umd_fees.csv"") |> "
+"0","   clean_names()"

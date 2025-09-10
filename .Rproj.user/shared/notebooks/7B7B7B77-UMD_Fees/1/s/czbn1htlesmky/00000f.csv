@@ -1,0 +1,6 @@
+"0",""
+"0","umd_fees_pct <- umd_fees |> "
+"0","  mutate(total_fees1 = fall_2024 + fall_2023 + fall_2022 + fall_2021) |> "
+"0","  mutate(total_fees = rowSums(across(2:5))) |> "
+"0","  mutate(average_fees = total_fees/4)"
+"0",""

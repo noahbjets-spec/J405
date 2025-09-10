@@ -1,0 +1,7 @@
+"0",""
+"0","umd_fees |> "
+"0","    summarize(mean_2024_fees = mean(fall_2024),"
+"0","            median_2024_fees = median(fall_2024),"
+"0","            max_2024_fees = max(fall_2024),"
+"0","            min_2024_fees = min(fall_2024)"
+"0",")"

@@ -1,0 +1,2 @@
+library(tidyverse)
+baltcity_income<- read_csv("assets/data/baltcity_income_clean.csv") %>% as.data.frame()
