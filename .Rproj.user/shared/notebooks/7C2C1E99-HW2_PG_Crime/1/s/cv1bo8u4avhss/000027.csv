@@ -1,0 +1,6 @@
+"0","summer_crime_averages <- pg_crime_averages %>%"
+"0","  mutate("
+"0","    june_change   = ((Jun - averages_incidents) / averages_incidents) * 100, "
+"0","    july_change   = ((Jul - averages_incidents) / averages_incidents) * 100, "
+"0","    august_change = ((Aug - averages_incidents) / averages_incidents) * 100 "
+"0","  )"

@@ -1,0 +1,5 @@
+"0","pg_crime_averages <- pg_crime  %>% "
+"0","  mutate(total_incidents = Jan + Feb + Mar + Apr + May + Jun +"
+"0","    Jul + Aug + Sep + Oct + Nov + Dec,"
+"0","    averages_incidents = total_incidents / 12)"
+"0",""
