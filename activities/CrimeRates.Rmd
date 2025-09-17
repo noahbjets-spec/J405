@@ -44,7 +44,7 @@ crimes_with_rates <- crimes |> mutate(violent_rate = violent_crime_total/populat
 ### Task 6: Describe our results
 
 Write a few sentences about what you found in the data. What years had the highest crime rates? What years had the lowest crime rates? Does the pattern match your expectations?
-
+The early 1990's saw a spike in crime rates peaking in 1995. Crime then seem to simmer back down after 9/11. The 2010's had very low crime rates overall and  the year 2020 experienced  the least amount of crime reported. This makes sense. Crime in the 90's nation wide was high while in 2020 crime rates were very low due to the Covid19 pandemic 
 
 
 
