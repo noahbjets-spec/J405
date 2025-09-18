@@ -23,7 +23,7 @@ wh_salaries <- read.csv("https://raw.githubusercontent.com/dwillis/jour405/refs/
 
 You should examine that dataframe carefully by clicking on it in the Environment tab in RStudio. Write a couple of sentences describing the categories of incidents. From a reporting standpoint, what stands out to you about this data? Are there any salary values that will cause problems for analysis?
 
-White House employees/detainees can make anywhere from $0 to $99,315. Senior shift leader's make the most while SENIOR DIRECTOR FOR BUILDINGS and POLICY ADVISOR either work voluntarily or have unreported salaries. As a reporter I might want to ask why these people have unreported salaries or what do they gain in place of volunteering 
+White House employees/detainees can make anywhere from $0 to $99,315. Senior shift leader's make the most while SENIOR DIRECTOR FOR BUILDINGS and POLICY ADVISOR either work voluntarily or have unreported salaries. As a reporter I might want to ask why these people have unreported salaries or what do they gain in place of volunteering. The issue that could arise is that while it's probable these salaries are yearly, nothing specifically tells us this. 
 
 ### Task 4: Calculate the Mean and Median of the Salaries
 
@@ -61,12 +61,12 @@ NOTE - Used AI to help with summarizing results,see line 34
 
 Write a couple of sentences describing the results of your analysis. What do the mean and median salaries tell you about the data? What do the minimum and maximum salaries tell you? Are there any outlines in the data?
 
-The average employee makes around 107k a year while the median data is 110K a year. The two outliers are ASSOCIATE COUNSEL and SENIOR ASSOCIATE COUNSEL as they are the only two employees who make over 200k
+The average employee makes around 107k a year while the median data is 110K a year. The minimum and maximum salaries tell that high earning positions can make up to 250K a year however some as volunteers can make as little as 0.  The two outlines are ASSOCIATE COUNSEL and SENIOR ASSOCIATE COUNSEL as they are the only two employees who make over 200k.
  
  ### Task 7: Story Idea
 
 Based on the data, what is your best story idea? What is the next step you would take to develop that story idea?
 
-If we assume  these salaries are given yearly then the mean of the data looks similar to what one might see from a normal range of salaries in a city office job. One might think that white house employees would make much more but in reality the majority of them are middle to upper middle class. This could be a story informing the public that those who work in the executive branch make much less then what american likely think. This story could lead to more sympathy from Americans. A reporter might also note that the ASSOCIATE COUNSEL makes far more money then the rest of employees. The reporter could research why that is? As mentioned earlier some workers seem to voltmeters and it would be best to focus on.
+If we assume  these salaries are given yearly, then the mean of the data looks similar to what one might see from a normal range of salaries in a city office job. One might think that white house employees would make much more but in reality the majority of them are middle to upper middle class. This could be a story informing the public that those who work in the executive branch make much less then what american likely think. This story could lead to more sympathy from Americans. A reporter might also note that the ASSOCIATE COUNSEL makes far more money then the rest of employees. The reporter could research why that is? As mentioned earlier some workers seem to voltmeters and it would be best to focus on.
 
 ANSWER HERE
