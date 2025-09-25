@@ -30,10 +30,17 @@ Calculate violent and property crime rates for each city for both years using `m
 ```{r} 
 md_cities_rates <- md_cities %>%
   mutate(violent_rate_2019 = violent2019/pop2019, property_rate_2019 = property2019/pop2019,
-       violent_rate_2020 = violent2020/pop2020, property_rate_2020 = property2020/pop2020)
-  
+       violent_rate_2020 = violent2020/pop2020, property_rate_2020 = property2020/pop2020)  
+
+md_cities_percentiles <- md_cities_rates %>% mutate(percentile = ntile(violent2020, 100))
+md_cities_rates %>%
+  summarize(IQR_violent_2020 = IQR(violent_rate_2020))
 
 ```
+
+10 cities are above the 90th percentile 
+I would add that other popular cities, such as Rockville and Gaithersburg, are also in higher percentiles as well
+
 
 ### Task 4: Describe the Rates
 

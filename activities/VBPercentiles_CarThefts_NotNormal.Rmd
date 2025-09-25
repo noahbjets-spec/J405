@@ -11,7 +11,6 @@ Your name:
 
 #------------------------------------------------------------------------------#
 
-
 # Part 1: When Data Isn't Normal
 
 Working in pairs, consider the following question: "Why do many statistical methods assume a normal distribution, and what challenges arise when data does not meet this assumption?"
