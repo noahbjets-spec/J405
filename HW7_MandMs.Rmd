@@ -95,7 +95,7 @@ mandms |>
 
 Compare the three sets of means, standard deviations and histograms. Which are more helpful to you in understanding the accuracy of the samples?
 
-“I believe the mean helps the most with understanding the accuracy of the samples, because it quickly shows where the center of the data is. The stander division is also helpful but the mean gives a number that is easier to understand to the average person. It shows how spread out the data is but it doesn't account for what the average person might expect in their bag.  The histogram are very  hard to understand and don't reflect on much at all. There is no story with them, the just clump the numbers together, with the Y axis have no significant value at all. 
+I believe the mean helps the most with understanding the accuracy of the samples, because it quickly shows where the center of the data is. The stander division is also helpful but the mean gives a number that is easier to understand to the average person. It shows how spread out the data is but it doesn't account for what the average person might expect in their bag.  The histogram are very  hard to understand and don't reflect on much at all. There is no story with them, the just clump the numbers together, with the Y axis have no significant value at all. 
 
 What does this exercise tell you about the relationship between sample size and estimate accuracy? The sample size and accuracy share a very similar mean and standered deviation. This shows that sample size. while not perfect can summerize data quickly and well, 
 
