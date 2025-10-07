@@ -13,6 +13,9 @@ Your task in this assignment will be to examine the relationship between those t
 ### Task 1: Load the tidyverse
 
 ```{r}
+library(tidyverse)
+
+
 ```
 
 ### Task 2: Load the GDP and DJIA data
@@ -20,6 +23,8 @@ Your task in this assignment will be to examine the relationship between those t
 Load the GDP data from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/gdp_djia.csv
 
 ```{r}
+gdpdata <- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/gdp_djia.csv")
+
 ```
 
 ### Task 3: Calculate the correlation coefficient
@@ -27,6 +32,8 @@ Load the GDP data from https://raw.githubusercontent.com/dwillis/jour405/refs/he
 Use the `cor()` function to calculate the correlation coefficient between the DJIA and GDP.
 
 ```{r}
+correlation <- cor(gdpdata$GDP, gdpdata$DJIA)
+
 ```
 
 ### Task 4: Create a scatterplot
@@ -34,11 +41,19 @@ Use the `cor()` function to calculate the correlation coefficient between the DJ
 Use the `ggplot()` function to create a scatterplot of the DJIA and GDP. Be sure to label your axes and add a title.
 
 ```{r}
+gdpdata |> 
+  ggplot(aes(x = GDP, y = DJIA)) +
+  geom_point(color = "red", size = 1) +
+  labs(
+    title = " U.S. GDP and DJIA Correlation")
+
 ```
 
 ### Task 5: Describe our results
 
 Write a few sentences about the relationship between the DJIA and GDP. Is there a strong correlation between the two variables? What does the scatterplot show?
+
+The scatterplot shows an extremely strong correlation between the DJIA and GDP. As the DJIA rises so does the GDP. This is reflected through the stable .953 coefficient found earlier in the code. 
 
 
 When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
