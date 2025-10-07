@@ -45,7 +45,8 @@ gdpdata |>
   ggplot(aes(x = GDP, y = DJIA)) +
   geom_point(color = "red", size = 1) +
   labs(
-    title = " U.S. GDP and DJIA Correlation")
+    title = " U.S. GDP and DJIA Correlation",
+    x = "GDP Change", y = "DJIA Change")
 
 ```
 
