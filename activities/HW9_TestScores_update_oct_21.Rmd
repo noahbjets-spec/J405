@@ -113,9 +113,8 @@ Examine the chart you created, and suggest a better title based on the results o
 This is where we formally test the superintendent's claim that reading scores have improved. Fill in the REPLACE_ME values as needed, beginning with your hypotheses.
 
 **Hypotheses:**
-Null: The new reading program REPLACE_ME
-Alternative: The new reading program REPLACE_ME
-
+Null: The new reading program did not improve reading scores. The mean is still 72.6.
+Alternative: The new reading program did improve reading scores. The mean is greater than 72.6.
 ```{r}
 # Set the significance level for your test
 alpha_level <-  0.05 # Replace with the appropriate value
@@ -167,7 +166,7 @@ story_stats <- tibble(
 story_stats
 ```
 
-## Conclusion
+## Conclusion 
 
 ### Reflection Question 5: (4 points)
 Based on these statistics, what would be your headline and lead paragraph for this story? Is there evidence to support the superintendent's claim?
