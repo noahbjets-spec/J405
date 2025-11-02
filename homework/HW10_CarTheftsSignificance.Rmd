@@ -1,7 +1,10 @@
 ---
 title: "Car Thefts Significance"
-name: REPLACE WITH YOUR NAME
+author: "Derek Willis/Rob Wells"
+date: 10-27-2025
 ---
+
+name: Noah Bland
 
 Your editor wants to know if there have been recent changes in the number of car thefts in Prince George's County. Using monthly figures and significance testing, you'll come up with an answer and decide whether there's a story here. As with the previous homework, provide answers in this notebook when prompted and you will have to fill in values where you see REPLACE_ME. Get started by loading the tidyverse in a new R block.
 
@@ -10,6 +13,7 @@ Your editor wants to know if there have been recent changes in the number of car
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # LOAD THE TIDYVERSE
+library(tidyverse)
 ```
 
 
@@ -28,9 +32,7 @@ glimpse(car_thefts)
 
 ### Task 3: Let's make a chart and describe the results.
 
-We'll make a line chart using geom_line() to try and illustrate any trend over time. What's your initial reaction to the change in car thefts? Is there a trend?
-
-PUT ANSWERS HERE
+We'll make a line chart using geom_line() to try and illustrate any trend over time. 
 
 ```{r}
 
@@ -52,17 +54,25 @@ ggplot(aes(x = month, y = total)) +
 
 ```
 
+
+**Q3:** What's your initial reaction to the change in car thefts? Is there a trend?
+
+As a Maryland resident I am happy to see this. Thefts seem to be the decline 
+even after a spike in mid 2024. As the weather got colder at the end thefts went down.
+
 ### Task 4: Add the mean, standard error and calculate a margin of error based on a 95% confidence interval
 
 Let's add some stats to that process - mean and standard deviation - and calculate the standard error and 95% confidence intervals. We only have a small number of months, so we'll calculate the margin of error to account for that. 
+
+**INSERT CORRECT VARIABLE AT "REPLACE ME"**
 
 ```{r}
 
 theft_summary <- car_thefts |> 
   summarize(
-    mean_thefts = mean(total),
-    sd_thefts = sd(REPLACE_ME),
-    months = n(),
+    mean_thefts = mean(434.4),
+    sd_thefts = sd(99.5),
+    months = n(20),
     se_thefts = sd_thefts / sqrt(months),
     margin_error = qt(0.975, df = months - 1) * se_thefts,  # Using t-distribution for small sample
     ci_lower = mean_thefts - margin_error,
@@ -106,19 +116,22 @@ ggplot(aes(x = month, y = total)) +
 
 ### Task 6: Describe the confidence interval.
 
-- What does the 95% confidence interval show here?
-- What figure(s) accurately reflects the number of car thefts in a typical month?
-- Propose a headline about the trend in car thefts that is focused on the present and future, but informed by the data you see above.
+- What does the 95% confidence interval show here? Id you repeated the study many times and built a 95% interval each time, about 95 out of 100 of those intervals would include the real average.
 
-PUT YOUR ANSWERS HERE.
+- What figure(s) accurately reflects the number of car thefts in a typical month? The mean shows what a normal month looks like but thier are plenty of outliers here
 
+- Propose a headline about the trend in car thefts that is focused on the present and future, but informed by the data you see above. **WRITE ANSWER HERE:**
 
+"Car thefts continue to decline but past data shows Maryland 
+could rebound"
 ### Task 7: Is the recent trend significant?
 
 It _looks_ like car thefts are decreasing lately. But is that change real? We'll split the monthly data into two halves, and then ask if whether there's a statistically significant difference between these periods. To do that, we'll use a t-test with our alpha at 0.05 and develop a null hypothesis and an alternative hypothesis for this scenario.
 
 Null Hypothesis: there is no real difference between the two periods
 Alternative Hypothesis: there is a real difference between the two periods
+
+**INSERT CORRECT VARIABLES AT "REPLACE ME"**
 
 ```{r}
 
@@ -138,11 +151,11 @@ t_test_periods
 period_summary <- car_thefts |> 
   group_by(period) |> 
   summarize(
-    mean_thefts = mean(REPLACE_ME),
-    sd_thefts = sd(total),
+    mean_thefts = mean(434.4),
+    sd_thefts = sd(99.5),
     months = n(),
     se_thefts = sd_thefts / sqrt(months),
-    margin_error = qt(0.975, df = REPLACE_ME - 1) * se_thefts, # look at how we calculated this above
+    margin_error = qt(0.975, df =   1) * se_thefts, # look at how we calculated this above
     ci_lower = mean_thefts - margin_error,
     ci_upper = mean_thefts + margin_error
   )
@@ -166,11 +179,12 @@ ggplot(aes(x = period, y = mean_thefts, fill = period)) +
 
 ### Task 8: Reflection
 
-Given the above chart, is the difference between the two periods statistically significant? Can we reject the null hypothesis?
+Given the above chart, is the difference between the two periods statistically significant? Can we reject the null hypothesis? The difference between the two periods is not significant. The p-value  is higher than 0.05, which means the small change in car thefts could happen by chance
 
 How would you revise your headline from Task 6, if at all? What would you tell your editor, and what would you expect her to ask you?
 
-PUT ANSWERS HERE
+"Car thefts may seem lower recently, but data shows no real drop." I would tell me editor that I should have looked at my data and seen if the change was actually significant. 
+
 
 
 
