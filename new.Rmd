@@ -1,0 +1,27 @@
+
+```{r}
+library(tidyverse)
+install.packages("janitor")
+library(janitor)
+md_crime<- read_csv("md_crime2023-2024.csv")
+
+
+
+```
+
+
+```{r}
+homicide_summary <- md_crime %>%
+summarize(
+mean_homicide = mean(homicide, na.rm = TRUE),
+median_homicide = median(homicide, na.rm = TRUE),
+min_homicide = min(homicide, na.rm = TRUE),
+max_homicide = max(homicide, na.rm = TRUE)
+)
+
+
+
+
+```
+
+
