@@ -1,0 +1,89 @@
+---
+title: "Final Project – Part 1: Maryland County Crime"
+author: "Noah Bland"
+date: "November 10, 2025"
+---
+
+Is there a relationship between the change in property crimes and the change in violent crimes from 2019 to 2020?
+
+Null hypothesis: There is no significant relationship between the change in property crimes and the change in violent crimes.
+
+Alt hypothesis: There is a significant relationship between the change in property crimes and the change in violent crimes.
+
+```{r}
+library(tidyverse)
+library(janitor)
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+
+md_cities <- read_csv(
+  "https://raw.githubusercontent.com/dwillis/jour405/main/data/md_cities_crime_2019_2020.csv"
+) 
+
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r }
+md_city_rates <- md_cities %>%
+  mutate(
+    violent_rate_2019 = (violent2019 / pop2019) * 1000,
+    property_rate_2019 = (property2019 / pop2019) * 1000,
+    violent_rate_2020 = (violent2020 / pop2020) * 1000,
+    property_rate_2020 = (property2020 / pop2020) * 1000
+  )
+```
+
+
+
+```{r }
+md_city_change <- md_city_rates %>%
+  mutate(
+    violent_pct_change = ((violent_rate_2020 - violent_rate_2019) / violent_rate_2019) * 100,
+    property_pct_change = ((property_rate_2020 - property_rate_2019) / property_rate_2019) * 100
+  )
+
+md_city_change %>%
+  summarise(
+    mean_2020   = mean(violent_rate_2020, na.rm = TRUE),
+    median_2020 = median(violent_rate_2020, na.rm = TRUE),
+    min_2020    = min(violent_rate_2020, na.rm = TRUE),
+    max_2020    = max(violent_rate_2020, na.rm = TRUE))
+ 
+```
+
+```{r }
+library(ggplot2)
+ggplot(md_city_change, aes(x = violent_pct_change, y = property_pct_change)) +
+  geom_point(alpha = 0.7, color = "steelblue") +
+  geom_smooth(method = "lm", se = FALSE, color = "firebrick") +
+  coord_cartesian(xlim = c(-200, 100 ), ylim = c(-100, 200)) +
+  labs(
+    title = "Change in Violent vs Property Crime Totals (2019–2020)",
+    x = "Change in Property Crimes",
+    y = "Change in Violent Crimes"
+  ) +
+  theme_minimal()
+
+
+```
+
+```{r }
+cor.test(md_city_change$violent_pct_change, md_city_change$property_pct_change)
+
+
+```
+ 
+ Though the test shows a significant result (p < 0.05), the graph only shows a small upward trend with many outlies. This means that when property crime goes up, violent crime also goes up a little, but not by much. So, the hypothesis is a little supported, but not completely proven
