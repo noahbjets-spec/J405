@@ -67,8 +67,8 @@ md_city_change %>%
 ```{r }
 library(ggplot2)
 ggplot(md_city_change, aes(x = violent_pct_change, y = property_pct_change)) +
-  geom_point(alpha = 0.7, color = "steelblue") +
-  geom_smooth(method = "lm", se = FALSE, color = "firebrick") +
+  geom_point(alpha = 0.7, color = "purple") +
+  geom_smooth(method = "lm", se = FALSE, color = "yellow") +
   coord_cartesian(xlim = c(-200, 100 ), ylim = c(-100, 200)) +
   labs(
     title = "Change in Violent vs Property Crime Totals (2019–2020)",
@@ -86,8 +86,7 @@ cor.test(md_city_change$violent_pct_change, md_city_change$property_pct_change)
 
 ```
  
- Though the test shows a significant result (p < 0.05), the graph only shows a small upward trend with many outlies. This means that when property crime goes up, violent crime also goes up a little, but not by much. So, the hypothesis is a little supported, but not completely proven
- 
+ Though the test shows a significant result (p < 0.05), the graph only shows a small upward trend with many outlies. This means that when property crime goes up, violent crime also goes up a little, but not by much. So, the hypothesis is a little supported, but not completely proven. I would like to know why the test's answers did not refelct the graph's visuals?
 
 1.The data shows violent and property crime count with population totals for Maryland cities, covering the years 2019 and 2020.
 
