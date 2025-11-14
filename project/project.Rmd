@@ -100,5 +100,7 @@ Story Idea:
 Covid-19 wasn’t a reliable indicator of whether crime rates went up or down across Maryland
 
 The Covid-19 pandemic didn’t make crime rise or fall the same way across Maryland. Some places saw big change, others stayed about the same. Crime data released by police indicates that covid19 was not a good way to predict what would happen to crime in different communities.
+ 
+ Certin Maryland cities had violent crime rates as low as 0, others reached almost 24 crimes per 1,000 people. The percent changes also moved in vastly different directions. A few places saw crime go up by more than 100 percent, while others saw a drop. Most cities stayed closer to zero, with only small changes.
 
 
