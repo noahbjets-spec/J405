@@ -87,12 +87,19 @@ cor.test(md_city_change$violent_pct_change, md_city_change$property_pct_change)
 ```
  
  Though the test shows a significant result (p < 0.05), the graph only shows a small upward trend with many outlies. This means that when property crime goes up, violent crime also goes up a little, but not by much. So, the hypothesis is a little supported, but not completely proven
-
+ 
 
 1.The data shows violent and property crime count with population totals for Maryland cities, covering the years 2019 and 2020.
 
 2.The most important columns are the ones showing change over time like  specifically violent_pct_change and property_pct_change.
 
-3. The data is missing extra context variables such as demographics, and policing data, both  of which can have implications on the numbers.
+3. The data is missing context variables such as demographics, and policing data, both  of which can have implications on the numbers.
 
 4.Using the violent_rate_2020 column, I  noticed that the mean was 2.90, the median was 1.77, the lowest value was 0, and the highest value was 23.97
+
+Story Idea: 
+Covid-19 wasn’t a reliable indicator of whether crime rates went up or down across Maryland
+
+The Covid-19 pandemic didn’t make crime rise or fall the same way across Maryland. Some places saw big change, others stayed about the same. Crime data released by police indicates that covid19 was not a good way to predict what would happen to crime in different communities.
+
+
