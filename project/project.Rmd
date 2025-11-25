@@ -4,11 +4,14 @@ author: "Noah Bland"
 date: "November 10, 2025"
 ---
 
-Is there a relationship between the change in property crimes and the change in violent crimes from 2019 to 2020?
+Hypothesis: Is there a relationship between the change in property crimes and the change in violent crimes from 2019 to 2020?
 
-Null hypothesis: There is no significant relationship between the change in property crimes and the change in violent crimes.
+Null hypothesis:There is no statistically significant correlation between violent_pct_change and property_pct_change from 2019 to 2020 in Maryland cities.
 
-Alt hypothesis: There is a significant relationship between the change in property crimes and the change in violent crimes.
+Hypothesis:There is a statistically significant correlation between violent_pct_change and property_pct_change from 2019 to 2020 in Maryland cities.
+
+Null hypothesis: Cities with property crime increases and decreases have the same mean violent % change.
+Alt: The means are different.
 
 ```{r}
 library(tidyverse)
@@ -44,16 +47,22 @@ md_city_rates <- md_cities %>%
     violent_rate_2020 = (violent2020 / pop2020) * 1000,
     property_rate_2020 = (property2020 / pop2020) * 1000
   )
+
+
+"This part of the code makes new columns that show crime rates. 
+I took crime numbers in each city and divided them by the city’s population. Afterward,I  multiplied it by 1,000. It tells me how many crimes happen for every 1,000 people,"
 ```
 
 
 
 ```{r }
+
 md_city_change <- md_city_rates %>%
   mutate(
     violent_pct_change = ((violent_rate_2020 - violent_rate_2019) / violent_rate_2019) * 100,
     property_pct_change = ((property_rate_2020 - property_rate_2019) / property_rate_2019) * 100
   )
+"My code shows how much crime went up or down from 2019 to 2020 per city"
 
 md_city_change %>%
   summarise(
@@ -61,8 +70,22 @@ md_city_change %>%
     median_2020 = median(violent_rate_2020, na.rm = TRUE),
     min_2020    = min(violent_rate_2020, na.rm = TRUE),
     max_2020    = max(violent_rate_2020, na.rm = TRUE))
- 
+ "This code tells us what violent crime looked like across all Maryland cities in 2020."
+
+md_city_change %>%
+  summarise(
+    sd_violent_change = sd(violent_pct_change, na.rm = TRUE),
+    sd_property_change = sd(property_pct_change, na.rm = TRUE)
+  )
+
+
+"My code shows how different the percent changes were between cities."
+
+""
+
+
 ```
+
 
 ```{r }
 library(ggplot2)
@@ -77,11 +100,46 @@ ggplot(md_city_change, aes(x = violent_pct_change, y = property_pct_change)) +
   ) + 
   theme_minimal()
 
+"My graph shows whether cities that had bigger percent changes in violent crime also had bigger percent changes in property crime from 2019 to 2020."
 
+"The correlation looks like it's weak on the graph because outliers pull the line up."
+
+```
+
+
+```{r }
+
+
+
+
+
+cor_result <- cor.test(
+  md_city_change$violent_pct_change,
+  md_city_change$property_pct_change
+)
+
+print(cor_result)
+
+ 
 ```
 
 ```{r }
 cor.test(md_city_change$violent_pct_change, md_city_change$property_pct_change)
+
+md_summary <- md_city_change |>
+  summarize(
+    violent_mean = mean(violent_pct_change),
+    property_mean = mean(property_pct_change),
+    violent_sd = sd(violent_pct_change),
+    property_sd = sd(property_pct_change),
+    correlation = cor(violent_pct_change, property_pct_change),
+    p_value = cor.test(violent_pct_change, property_pct_change)$p.value
+  )
+
+
+
+"My code checks if changes in violent crime and changes in property crime are really connected or if the pattern we see is just random, using a p-valu"
+'I fixed errors by re-running the mutate step before I ran the tests and making sure my variable names were correct.
 
 
 ```
