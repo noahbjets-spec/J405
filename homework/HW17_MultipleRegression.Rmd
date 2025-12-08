@@ -9,7 +9,9 @@ date: 8-24-2025
 Multiple regression analysis is a statistical method used to understand the relationship between one dependent variable and two or more independent variables. This analysis is particularly useful in journalism for exploring complex relationships in civic data, such as how different demographic and socioeconomic factors collectively impact voter turnout. By understanding these relationships, journalists can provide deeper insights into civic participation patterns and identify potential barriers to voting.
 
 ```{r setup}
+install.packages("tidyverse")
 library(tidyverse)
+install.packages("corrplot", dependencies = TRUE)
 #install.packages('corrplot')
 library(corrplot)
 ```
@@ -27,7 +29,7 @@ head(md_turnout)
 
 Before building our model, let's explore the data to understand the variables and their relationships. Examine the correlation matrix to see how the independent variables relate to each other and to the dependent variable (voter turnout). Which variables seem to be correlated? Are there any that are not correlated at all? Also look at the multiple scatterplots. Which variables seem to have a linear relationship with the dependent variable? Which do not?
 
-ANSWER HERE
+Voter turnout seems to be strongly linked to income and education. Both seem to show positive correlations. White population has a somewhat negitive correlation and unemployment and median age don't seem to relate to turn out at all. 
 
 
 ```{r}
@@ -90,7 +92,8 @@ The coefficients tell us the estimated effect of each independent variable on th
 
 Examine the output of the model, checking the coefficients, residuals, and overall model fit. How well does this multiple variable model predict turnout? Do any of the variables seem to be insignificant? Is this a useful model, based on what you've seen? Why?
 
-ANSWER HERE
+The model shows that income and education are positive steady and statistically significant. "Percent white" has a negitive effect. 
+The residuals are centered around zero and have a small spread. This means the model fits well. The R squared is high, which means the model explains most of the differences in turnout, and is useful for our study. 
 
 ```{r}
 # Build initial model with all predictors
@@ -104,20 +107,20 @@ summary(initial_model)
 
 Create three alternative models by adding or removing variables to see if we can improve the model's performance. Turnout will always be the dependent variable, but you should alter the independent variables by removing or adding some. Then compare the models using adjusted R-squared values. Are any of the models significantly better than the others?
 
-ANSWER HERE
+Model 2 and 4 have adjusted R-squared values close to the full model. It means they explain turnout almost as well. Model 3 performs  worst because it removes too many variables.
 
 ```{r}
 # Model 2
-model2 <- lm(turnout ~ REPLACE ME, data = md_turnout)
-summary(model2)
+model2 <- lm(turnout ~ income + pct_bachelors_higher + pct_white, data = md_turnout)
+
 
 # Model 3
-model3 <- lm(turnout ~ REPLACE ME, data = md_turnout)
-summary(model3)
+model3 <- lm(turnout ~ income + pct_bachelors_higher, data = md_turnout)
+
 
 # Model 4
-model4 <- lm(turnout ~ REPLACE ME, data = md_turnout)
-summary(model4)
+model4 <- lm(turnout ~ income + pct_bachelors_higher + pct_white + population, data = md_turnout)
+
 
 # Compare models
 cat("Model 1 (Full model) - Adjusted R-squared:", summary(initial_model)$adj.r.squared, "\n")
@@ -145,4 +148,4 @@ ggplot(model_comparison, aes(x = reorder(Model, Adjusted_R_squared), y = Adjuste
 
 Without using the words "multiple regression model", describe how you could use this analysis to cover an election or voter participation story.
 
-ANSWER HERE
+The analysis shows which county traits are linked to higher voter turnout. By knowing that places with higher income and education levels tend to vote more, I will focus on why those communities participate more and why others might be falling behind in my reporting for the story. 
