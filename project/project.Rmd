@@ -161,8 +161,10 @@ t.test(violent_rate_2020 ~ prop_group, data = md_city_change)
  
  
 
-Even though the correlation test was statistically significant, the relationship is weak. Violent and property crime tend to move in the same direction, but only a little, which is why the trend line rises slightly even though the points are scattered.”
-.
+Even though the correlation test was statistically significant, the relationship is weak. Violent and property crime tend to move in the same direction, but only a little, which is why the trend line rises slightly even though the points are scattered.
+
+ The p-value was below 0.05, so I reject the null hypothesis and can see that the changes in property crime and violent crime are related.
+
 
 1.The data shows violent and property crime count with population totals for Maryland cities, covering the years 2019 and 2020.
 
